@@ -2,6 +2,7 @@
 from unittest import TestCase
 
 from app.models import db, Account, Role, User
+from app.utils.auth import digest
 from main import create_app
 
 
@@ -22,7 +23,7 @@ class BaseCase(TestCase):
         self.user1 = User(
             email='test@email.com',
             name='First Last',
-            password='Password*098',
+            password=digest('Password*098'),
             phone_number='+123 456 7890')
         self.user2 = User()
         self.user3 = User(
@@ -32,6 +33,21 @@ class BaseCase(TestCase):
             phone_number='+098 765 1234')
         self.account1 = Account(balance=1000.0)
         self.account2 = Account(balance=2500.0)
+
+        self.auth_1 = {
+            'email': 'test@email.com',
+            'password': 'Password*098'
+        }
+        self.auth_2 = {
+            'email': 'test@email.com',
+            'password': 'Password'
+        }
+        self.auth_3 = {
+            'email': 'test3@email.com',
+            'password': 'Password'
+        }
+        self.auth_4 = {
+            'email': 'test3@email.com'}
 
     def tearDown(self):
         """Delete database and recreate it with no data."""
