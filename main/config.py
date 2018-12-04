@@ -21,7 +21,7 @@ class DevelopmentConfig(BaseConfig):
     """Configuration for development environment."""
 
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = getenv('DEVELOPMENT_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = getenv('DATABASE_URL')
 
 
 class ProductionConfig(BaseConfig):
