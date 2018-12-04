@@ -10,9 +10,10 @@ from .routes import add_resources
 from app.models import db
 
 
-def create_app(configuration):
+def create_app():
     """Create flask application."""
     app = Flask(__name__)
+    configuration = getenv('FLASK_CONFIGURATION')
     app.config.from_object(configurations[configuration])
     app.app_context().push()
     db.init_app(app)
@@ -21,4 +22,4 @@ def create_app(configuration):
     add_resources(api)
     return app
 
-app = create_app(getenv('FLASK_CONFIGURATION'))
+app = create_app()
