@@ -1,5 +1,6 @@
 """Base test class."""
 from unittest import TestCase
+from sqlalchemy import create_engine
 
 from app.models import db, Role, User
 from app.utils.auth import digest
@@ -12,6 +13,7 @@ class BaseCase(TestCase):
 
     def setUp(self):
         """Set up test application."""
+        create_engine('sqlite:///:memory:')
         self.app = create_app()
         self.client = self.app.test_client()
         self.app_context = self.app.app_context()
