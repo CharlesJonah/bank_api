@@ -83,7 +83,7 @@ class Base(db.Model):
                 self.save()
         except Exception as e:
             return {
-                "message": "Ensure the values you're inserting are valid.",
+                "message": "Ensure the fields and values are valid.",
                 "exception": str(e)
             }
 
