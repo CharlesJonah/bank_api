@@ -28,13 +28,14 @@ class Account(Base):
     def deposit(self, amount):
         """Deposit funds to account."""
         self.update({'balance': self.balance + amount})
+        return self
 
     def transfer(self, number, amount):
         """Transfer funds to different account."""
         if self.balance < amount:
             return {'message': 'Insufficient funds.'}
-        elif not amount:
-            return {'message': 'You cannot transfer 0.'}
+        elif not amount or amount < 0:
+            return {'message': 'Transfers must be greater than 0'}
         else:
             if not self.exists(number=number):
                 return {'message': 'Account does not exist.'}
@@ -42,15 +43,17 @@ class Account(Base):
                 destination = self.get(number=number)
                 destination.update({'balance': destination.balance + amount})
                 self.update({'balance': self.balance - amount})
-                return True
+                return self
 
     def withdraw(self, amount):
         """Withdraw funds from account."""
         if self.balance < amount:
             return {'message': 'Insufficient funds.'}
+        elif not amount or amount < 0:
+            return {'message': 'Transfers must be greater than 0'}
         else:
             self.update({'balance': self.balance - amount})
-            return True
+            return self
 
     def view(self):
         """View detailed account information."""

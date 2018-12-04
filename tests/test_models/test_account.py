@@ -70,7 +70,9 @@ class TestAccount(BaseCase):
         result2 = account1.transfer(1, 100)
         self.assertDictEqual(result2, {'message': 'Account does not exist.'})
         result3 = account1.transfer(account2.number, 0)
-        self.assertDictEqual(result3, {'message': 'You cannot transfer 0.'})
+        self.assertDictEqual(
+            result3,
+            {'message': 'Transfers must be greater than 0'})
 
     def test_deposit(self):
         """Test depositing funds."""

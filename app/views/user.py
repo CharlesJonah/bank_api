@@ -26,9 +26,7 @@ class UserResource(Resource):
                 'status': 'success',
                 'data': {
                     'message': 'Welcome to your online bank account.',
-                    'user': result.view(),
-                    'token': create_token(result.email)
-                }
+                    'user': result.view(), 'token': create_token(result.email)}
             }, 201
 
     @token_required
@@ -38,10 +36,7 @@ class UserResource(Resource):
         email = view_token(request.headers.get('Authorization'))['email']
         user = User.get(email=email)
         return {
-            'status': 'success',
-            'data': {
-                'user': user.view()
-            }
+            'status': 'success', 'data': {'user': user.view()}
         }, 200
 
     @token_required
@@ -58,9 +53,7 @@ class UserResource(Resource):
             return {
                 'status': 'success',
                 'data': {
-                    'message': 'Update successful.',
-                    'user': result.view()
-                }
+                    'message': 'Update successful.', 'user': result.view()}
             }, 200
 
     @token_required
@@ -71,8 +64,4 @@ class UserResource(Resource):
         user = User.get(email=email)
         user.delete()
         return {
-            'status': 'success',
-            'data': {
-                'message': 'User deleted successfully.'
-            }
-        }, 200
+            'status': 'success', 'message': 'User deleted successfully.'}, 200
