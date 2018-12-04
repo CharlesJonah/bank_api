@@ -1,6 +1,7 @@
 """"Register application resources."""
 
 from app.views.auth import AuthResource
+from app.views.user import UserResource
 from app.views.welcome import WelcomeResource
 
 
@@ -15,5 +16,9 @@ def add_resources(api):
         AuthResource,
         '/api/v1/auth',
         '/api/v1/auth/')
+    api.add_resource(
+        UserResource,
+        '/api/v1/user',
+        '/api/v1/user/')
 
     return api

@@ -42,8 +42,7 @@ class TestAuth(BaseCase):
         self.assertEqual(400, response4.status_code)
         expected4 = {
             'status': 'fail',
-            'data': {'status': 'fail', 'error': 'Bad request',
-                     'message': 'Missing: password'}}
+            'data': {'status': 'fail', 'message': 'Missing: password'}}
         self.assertEqual(expected4, loads(response4.data))
 
         response5 = self.client.post(
@@ -54,8 +53,7 @@ class TestAuth(BaseCase):
         self.assertEqual(400, response4.status_code)
         expected5 = {
             'status': 'fail',
-            'data': {'status': 'fail', 'error': 'Bad request',
-                     'message': 'Missing: password'}}
+            'data': {'status': 'fail', 'message': 'Missing: password'}}
         self.assertEqual(expected5, loads(response5.data))
 
         response6 = self.client.post(
@@ -66,6 +64,5 @@ class TestAuth(BaseCase):
         self.assertEqual(400, response4.status_code)
         expected6 = {
             'status': 'fail',
-            'data': {'status': 'fail', 'error': 'Bad request',
-                     'message': 'Missing: password'}}
+            'data': {'status': 'fail', 'message': 'Missing: password'}}
         self.assertEqual(expected6, loads(response6.data))
