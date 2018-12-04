@@ -1,10 +1,10 @@
 """Test authentication."""
 from json import dumps, loads
 
-from tests import BaseCase
+from tests.test_views import AuthBaseCase
 
 
-class TestAuth(BaseCase):
+class TestAuth(AuthBaseCase):
     """Auth resource tests."""
 
     def test_auth(self):

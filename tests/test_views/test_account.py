@@ -1,9 +1,9 @@
 """Test account-based views."""
 from json import dumps, loads
-from tests.test_views import AccountsBaseCase
+from tests.test_views import AccountBaseCase
 
 
-class TestAccount(AccountsBaseCase):
+class TestAccount(AccountBaseCase):
     """Test account manipulation functionality."""
 
     def test_create_account(self):
@@ -44,7 +44,7 @@ class TestAccount(AccountsBaseCase):
         self.assertEqual(404, response3.status_code)
 
 
-class TestAccountDeposit(AccountsBaseCase):
+class TestAccountDeposit(AccountBaseCase):
     """Test depositing functionality."""
 
     def test_account_deposit(self):
@@ -78,7 +78,7 @@ class TestAccountDeposit(AccountsBaseCase):
         self.assertEqual(400, response4.status_code)
 
 
-class TestAccountWithdraw(AccountsBaseCase):
+class TestAccountWithdraw(AccountBaseCase):
     """Test withdrawing functionality."""
 
     def test_account_withdraw(self):
@@ -120,7 +120,7 @@ class TestAccountWithdraw(AccountsBaseCase):
         self.assertEqual(400, response5.status_code)
 
 
-class TestAccountTransfer(AccountsBaseCase):
+class TestAccountTransfer(AccountBaseCase):
     """Test transfer functionality."""
 
     def test_account_transfer(self):

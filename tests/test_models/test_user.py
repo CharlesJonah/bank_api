@@ -1,10 +1,10 @@
 """Test the user model."""
 
 from app.models import Role, User
-from tests import BaseCase
+from tests.test_models import ModelsBaseCase
 
 
-class TestUser(BaseCase):
+class TestUser(ModelsBaseCase):
     """User model testcase."""
 
     def test_create_user(self):

@@ -1,10 +1,10 @@
 """Test the Account model."""
 
 from app.models import Account, User
-from tests import BaseCase
+from tests.test_models import ModelsBaseCase
 
 
-class TestAccount(BaseCase):
+class TestAccount(ModelsBaseCase):
     """Account model testcase."""
 
     def test_create_account(self):
@@ -99,7 +99,3 @@ class TestAccount(BaseCase):
         self.assertEqual(float(500), account.balance)
         result = account.withdraw(1000)
         self.assertDictEqual(result, {'message': 'Insufficient funds.'})
-
-    def test_delete_account(self):
-        """Test deletion of a user."""
-        pass

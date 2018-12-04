@@ -1,10 +1,10 @@
 """Test the role model."""
 
 from app.models import Role
-from tests import BaseCase
+from tests.test_models import ModelsBaseCase
 
 
-class TestRole(BaseCase):
+class TestRole(ModelsBaseCase):
     """Role model testcase."""
 
     def test_create_role(self):

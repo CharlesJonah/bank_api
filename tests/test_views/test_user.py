@@ -2,18 +2,17 @@
 from json import dumps, loads
 
 from app.models import Role, User
-from tests import BaseCase
+from tests.test_views import UserBaseCase
 
 
-class TestUser(BaseCase):
+class TestUser(UserBaseCase):
     """User resource tests."""
 
     def test_create_user(self):
         """Test create user."""
-        self.role2.save()
         response1 = self.client.post(
             '/api/v1/user/',
-            data=dumps(self.user_1),
+            data=dumps(self.user_6),
             content_type='application/json')
         self.assertEqual(201, response1.status_code)
 
@@ -64,12 +63,6 @@ class TestUser(BaseCase):
 
     def test_get_user(self):
         """Test get a user."""
-        self.role2.save()
-        self.client.post(
-            '/api/v1/user/',
-            data=dumps(self.user_1),
-            content_type='application/json')
-
         response1 = self.client.get(
             '/api/v1/user/', headers=self.headers)
         self.assertEqual(200, response1.status_code)
