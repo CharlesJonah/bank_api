@@ -59,3 +59,156 @@ The application can be accessed in the `localhost` port number `5000`
 
 
 *The commands are for Unix based systems*
+
+
+# API Endpoints
+
+## Summary of functions:
+
+All endpoints relay information belonging to the logged in user.
+
+If a `token` is required, add `{Authorization: the_actual_token}` to the request headers.
+
+
+---------------------------------------------------------------------------------------
+Route: `/`, `/api/v1/`
+
+Method: `GET`
+
+Function: Display welcome message
+
+Requires: Nothing
+
+Token Required: No
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/auth/`
+
+Method: `POST`
+
+Function: Sign in user
+
+Requires: `JSON` with: `email`, `password`
+
+Token Required: No
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/user/`
+
+Method: `POST`
+
+Function: Create new user 
+
+Requires: `JSON` with: `name`,`email`, `phone_number`, `password`, `repeat_password`
+
+Token Required: No
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/user/`
+
+Method: `GET`
+
+Function: View user details
+
+Requires: Nothing
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/user/`
+
+Method: `PUT`
+
+Function: Edit currently logged in user details
+
+Requires: `JSON` with `new_data`
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/user/`
+
+Method: `DELETE`
+
+Function: Delete currently logged in user
+
+Requires: Nothing
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/account/`
+
+Method: `POST`
+
+Function: Create account for currently logged in user
+
+Requires: Nothing
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/account/<int:account_number>/`
+
+Method: `GET`
+
+Function: View account information
+
+Requires: Nothing
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/account/<int:account_number>/`
+
+Method: `DELETE`
+
+Function: Close an account
+
+Requires: Nothing
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/account/<int:account_number>/deposit/`
+
+Method: `POST`
+
+Function: Deposit funds into account
+
+Requires: `JSON` with `amount`
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/account/<int:account_number>/withdraw/`
+
+Method: `POST`
+
+Function: Withdraw funds from account
+
+Requires: `JSON` with `amount`
+
+Token Required: Yes
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/account/<int:account_number>/transfer/`
+
+Method: `POST`
+
+Function: Withdraw funds from account
+
+Requires: `JSON` with `amount`, `destination` (`destination` is account number to transfer funds to)
+
+Token Required: Yes
+
+
