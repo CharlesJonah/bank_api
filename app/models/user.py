@@ -27,6 +27,7 @@ class User(Base):
     name = db.Column(db.String(), nullable=False)
     password = db.Column(db.String(), nullable=False)
     phone_number = db.Column(db.String(), nullable=True, unique=True)
+    current_token = db.Column(db.String(), nullable=True)
 
     accounts = db.relationship(
         'Account', backref='user',

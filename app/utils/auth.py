@@ -48,9 +48,16 @@ def log_user_in(payload):
             'status': 'fail', 'data': {'message': 'Wrong password.'}
         }, 400
     token = create_token(payload['email'])
+    user.insert('current_token', token)
     return {
         'status': 'success', 'data': {'message': 'Welcome!', 'token': token}
     }, 200
+
+
+def log_user_out(user):
+    """Log a user out."""
+    user.insert('current_token', None)
+    return
 
 
 def token_required(f):
@@ -71,6 +78,8 @@ def token_required(f):
                     "status": "fail", "message": "User does not exist."}, 404
             if decoded_token['expires'] < time():
                 return {"status": "fail", "message": "Expired token."}, 400
+            if user.current_token is None:
+                return {"status": "fail", "message": "Please log in."}, 401
         except:
             return {"status": "fail", "message": "Bad token."}, 400
         return f(*args, **kwargs)

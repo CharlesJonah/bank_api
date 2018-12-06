@@ -5,7 +5,7 @@ from app.views.account import (
     AccountDepositResource,
     AccountTransferResource,
     AccountWithdrawResource)
-from app.views.auth import AuthResource
+from app.views.auth import LogInResource, LogOutResource
 from app.views.user import UserResource
 from app.views.welcome import WelcomeResource
 
@@ -18,9 +18,13 @@ def add_resources(api):
         '/api/v1',
         '/api/v1/')
     api.add_resource(
-        AuthResource,
-        '/api/v1/auth',
-        '/api/v1/auth/')
+        LogInResource,
+        '/api/v1/auth/login',
+        '/api/v1/auth/login/')
+    api.add_resource(
+        LogOutResource,
+        '/api/v1/auth/logout',
+        '/api/v1/auth/logout/')
     api.add_resource(
         UserResource,
         '/api/v1/user',
