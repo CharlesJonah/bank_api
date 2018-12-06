@@ -2,7 +2,7 @@
 from os import getenv
 from json import dumps
 
-from app.models import Account
+from app.models import Account, User
 from tests import BaseCase
 
 
@@ -28,6 +28,8 @@ class AccountBaseCase(ViewBaseCase):
             '/api/v1/user/',
             data=dumps(self.user_1),
             content_type='application/json')
+        user = User.get(id=1)
+        user.insert('current_token', self.headers['Authorization'])
         self.client.post('/api/v1/accounts/', headers=self.headers)
         self.client.post('/api/v1/accounts/', headers=self.headers)
         self.account = Account.get(id=1)
@@ -45,6 +47,8 @@ class UserBaseCase(ViewBaseCase):
             '/api/v1/user/',
             data=dumps(self.user_1),
             content_type='application/json')
+        user = User.get(id=1)
+        user.insert('current_token', self.headers['Authorization'])
 
         self.user_2 = {
             'password': 'Password*098',

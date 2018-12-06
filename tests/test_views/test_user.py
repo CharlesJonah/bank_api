@@ -143,11 +143,6 @@ class TestUser(UserBaseCase):
 
     def test_delete_user(self):
         """Test user deletion."""
-        self.role2.save()
-        self.client.post(
-            '/api/v1/user/',
-            data=dumps(self.user_1),
-            content_type='application/json')
         response1 = self.client.delete(
             '/api/v1/user/',
             headers=self.headers)

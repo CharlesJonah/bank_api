@@ -1,4 +1,5 @@
 """Base test class."""
+from os import getenv
 from unittest import TestCase
 from sqlalchemy import create_engine
 
@@ -27,7 +28,8 @@ class BaseCase(TestCase):
             email='test@email.com',
             name='First Last',
             password=digest('Password*098'),
-            phone_number='+123 456 7890')
+            phone_number='+123 456 7890',
+            current_token=getenv('TEST_TOKEN'))
         self.user_1 = {
             'name': 'First Last',
             'email': 'test@email.com',

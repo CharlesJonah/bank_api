@@ -77,21 +77,33 @@ Method: `GET`
 
 Function: Display welcome message
 
-Requires: Nothing
+Payload: Nothing
 
 Token Required: No
 
 
 ---------------------------------------------------------------------------------------
-Route: `/api/v1/auth/`
+Route: `/api/v1/auth/login/`
 
 Method: `POST`
 
-Function: Sign in user
+Function: Sign user in
 
-Requires: `JSON` with: `email`, `password`
+Payload: `JSON` with: `email`, `password`
 
 Token Required: No
+
+
+---------------------------------------------------------------------------------------
+Route: `/api/v1/auth/logout/`
+
+Method: `POST`
+
+Function: Sign user out
+
+Payload: Nothing
+
+Token Required: Yes
 
 
 ---------------------------------------------------------------------------------------
@@ -101,7 +113,7 @@ Method: `POST`
 
 Function: Create new user 
 
-Requires: `JSON` with: `name`,`email`, `phone_number`, `password`, `repeat_password`
+Payload: `JSON` with: `name`,`email`, `phone_number`, `password`, `repeat_password`
 
 Token Required: No
 
@@ -113,7 +125,7 @@ Method: `GET`
 
 Function: View user details
 
-Requires: Nothing
+Payload: Nothing
 
 Token Required: Yes
 
@@ -123,9 +135,9 @@ Route: `/api/v1/user/`
 
 Method: `PUT`
 
-Function: Edit currently logged in user details
+Function: Edit currently logged in user's details
 
-Requires: `JSON` with `new_data`
+Payload: `JSON` with `new_data`
 
 
 ---------------------------------------------------------------------------------------
@@ -135,7 +147,7 @@ Method: `DELETE`
 
 Function: Delete currently logged in user
 
-Requires: Nothing
+Payload: Nothing
 
 Token Required: Yes
 
@@ -147,7 +159,7 @@ Method: `POST`
 
 Function: Create account for currently logged in user
 
-Requires: Nothing
+Payload: Nothing
 
 Token Required: Yes
 
@@ -159,7 +171,7 @@ Method: `GET`
 
 Function: View account information
 
-Requires: Nothing
+Payload: Nothing
 
 Token Required: Yes
 
@@ -171,7 +183,7 @@ Method: `DELETE`
 
 Function: Close an account
 
-Requires: Nothing
+Payload: Nothing
 
 Token Required: Yes
 
@@ -183,7 +195,7 @@ Method: `POST`
 
 Function: Deposit funds into account
 
-Requires: `JSON` with `amount`
+Payload: `JSON` with `amount`
 
 Token Required: Yes
 
@@ -195,7 +207,7 @@ Method: `POST`
 
 Function: Withdraw funds from account
 
-Requires: `JSON` with `amount`
+Payload: `JSON` with `amount`
 
 Token Required: Yes
 
@@ -207,7 +219,7 @@ Method: `POST`
 
 Function: Withdraw funds from account
 
-Requires: `JSON` with `amount`, `destination` (`destination` is account number to transfer funds to)
+Payload: `JSON` with `amount`, `destination` (`destination` is account number to transfer funds to)
 
 Token Required: Yes
 

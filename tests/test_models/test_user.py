@@ -30,8 +30,8 @@ class TestUser(ModelsBaseCase):
         self.user1.save()
         user = User.get(id=1)
         expected = sorted(
-            ['created_at', 'updated_at', 'id',
-             'email', 'name', 'password', 'phone_number'])
+            ['created_at', 'updated_at', 'id', 'email',
+             'name', 'password', 'phone_number', 'current_token'])
         self.assertEqual(expected, sorted(list(user.serialize().keys())))
 
     def test_repr_user(self):
