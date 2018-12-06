@@ -119,12 +119,12 @@ class AccountWithdrawResource(Resource):
 
 
 class AccountTransferResource(Resource):
-    """Withdraw money from an account."""
+    """Transfer money to an account."""
 
     @token_required
     @role_required('customer')
     def post(self, account_number):
-        """Withdraw money from account."""
+        """Transfer money to an account."""
         email = view_token(request.headers.get('Authorization'))['email']
         user = User.get(email=email)
         account = get_account(user, account_number)
